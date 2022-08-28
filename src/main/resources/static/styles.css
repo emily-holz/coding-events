@@ -1,16 +1,3 @@
 body {
-    font-size:18px;
-    color:purple;
-}
-
-td {
-    text-align: left;
-}
-
-table, th, td {
-    border: 1px solid;
-}
-
-th, td {
-    padding: 15px;
+  font-size: 18px;
 }

@@ -1,6 +1,7 @@
 package org.launchcode.codingevents.models;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Objects;
@@ -21,15 +22,30 @@ public class Event {
     @Email(message="Invalid email. Try again.")
     private String contactEmail;
 
-    public Event(String name, String description, String contactEmail) {
-        this.name = name;
-        this.description = description;
-        this.contactEmail = contactEmail;
+    @NotBlank(message="Location must be provided.")
+    private String location;
+
+    private boolean needToRegister;
+
+    @Min(value = 1, message = "Participant size must be 1 or more.")
+    private int numberOfAttendees;
+
+
+    public Event(){
         this.id = nextId;
         nextId++;
     }
 
-    public Event(){}
+    public Event(String name, String description, String contactEmail, String location, boolean needToRegister, int numberOfAttendees) {
+        this();
+        this.name = name;
+        this.description = description;
+        this.contactEmail = contactEmail;
+        this.location = location;
+        this.needToRegister = needToRegister;
+        this.numberOfAttendees = numberOfAttendees;
+    }
+
 
     public String getName() {
         return name;
@@ -57,6 +73,30 @@ public class Event {
 
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public boolean isNeedToRegister() {
+        return needToRegister;
+    }
+
+    public void setNeedToRegister(boolean needToRegister) {
+        this.needToRegister = needToRegister;
+    }
+
+    public int getNumberOfAttendees() {
+        return numberOfAttendees;
+    }
+
+    public void setNumberOfAttendees(int numberOfAttendees) {
+        this.numberOfAttendees = numberOfAttendees;
     }
 
     @Override
